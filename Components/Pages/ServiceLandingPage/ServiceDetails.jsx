@@ -1,4 +1,5 @@
 import { BUSINESS_PHONE } from '@/utils/businessContact';
+import ServiceContentSections from './ServiceContentSections';
 import styles from './ServiceDetails.module.scss';
 
 export default function ServiceDetails({ page, slug, children }) {
@@ -40,6 +41,7 @@ export default function ServiceDetails({ page, slug, children }) {
           )}
         </aside>
       </div>
+      <ServiceContentSections page={page} />
       {children}
       <div className={styles.followUp}>
         <h2>Questions about {page.label.toLowerCase()}</h2>

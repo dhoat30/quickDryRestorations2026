@@ -1,16 +1,21 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Dialog from "@mui/material/Dialog";
 import IconButton from "@mui/material/IconButton";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import CloseIcon from "@mui/icons-material/Close";
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
 import BeforeAfterMasonry from "@/Components/UI/BeforeAfterSlider/BeforeAfterMasonry";
 import styles from "./BeforeAfterGallerySection.module.scss";
 
 export default function BeforeAfterGallerySection({ title, description, images, featuredComparisons = false }) {
+  const sectionRef = useRef(null);
+  const [expanded, setExpanded] = useState(false);
+  const isMobile = useMediaQuery("(max-width:700px)");
+  const isTablet = useMediaQuery("(max-width:1100px)");
   const [activeIndex, setActiveIndex] = useState(null);
   const [activeMedia, setActiveMedia] = useState("image");
   const [videoError, setVideoError] = useState(false);
@@ -45,6 +50,9 @@ export default function BeforeAfterGallerySection({ title, description, images, 
 
   if (galleryItems.length === 0) return null;
 
+  const previewCount = 2 * (isMobile ? 1 : isTablet ? 2 : 3);
+  const visibleItems = expanded ? galleryItems : galleryItems.slice(0, previewCount);
+  const hasMore = galleryItems.length > previewCount;
   const activeItem = activeIndex !== null ? galleryItems[activeIndex] : null;
   const activeVideo = activeMedia === "video" ? activeItem?.video : null;
   const videoWidth = Number(activeVideo?.width);
@@ -57,8 +65,13 @@ export default function BeforeAfterGallerySection({ title, description, images, 
     setActiveIndex(index);
   };
 
+  const toggleGallery = () => {
+    if (expanded) sectionRef.current?.scrollIntoView({ block: "start" });
+    setExpanded(previous => !previous);
+  };
+
   return (
-    <section className={styles.section} id="before-after-gallery" aria-labelledby="gallery-title">
+    <section ref={sectionRef} className={styles.section} id="before-after-gallery" aria-labelledby="gallery-title">
       <Container maxWidth="xl" className={styles.container}>
         <div className={styles.header}>
           <div className={styles.titleWrapper}>
@@ -76,8 +89,8 @@ export default function BeforeAfterGallerySection({ title, description, images, 
           />
         </div>
 
-        <div className={`${styles.grid} ${featuredComparisons ? styles.featuredGrid : ""}`}>
-          {galleryItems.map((item, index) => {
+        <div id="gallery-images" className={`${styles.grid} ${featuredComparisons ? styles.featuredGrid : ""} ${!expanded ? styles.previewGrid : ""}`}>
+          {visibleItems.map((item, index) => {
             const media = (
               <div
                 className={styles.mediaWrap}
@@ -127,6 +140,20 @@ export default function BeforeAfterGallerySection({ title, description, images, 
             );
           })}
         </div>
+        {hasMore && (
+          <div className={styles.galleryActions}>
+            <button
+              className={styles.viewMore}
+              type="button"
+              aria-expanded={expanded}
+              aria-controls="gallery-images"
+              onClick={toggleGallery}
+            >
+              {expanded ? "Show less" : "View more"}
+              <span className={expanded ? styles.chevronUp : styles.chevron} aria-hidden="true" />
+            </button>
+          </div>
+        )}
       </Container>
 
       <Dialog

@@ -50,8 +50,152 @@
   margin-top: 1.5rem; display: flex; gap: .8rem; flex-wrap: wrap;
   a { display: inline-flex; align-items: center; justify-content: center; padding: .8rem 1.5rem; min-height: 48px; border-radius: 2rem; font-weight: 650; }
 }
-.quote, .call { background: #205e80; color: white; }
+.quote, .call { background: var(--cta-background); color: white; }
+.quote:hover, .call:hover { background: var(--cta-background-hover); }
 .call + .quote { background: white; border: 1px solid #205e80; color: #205e80; }
+
+.contentSection {
+  margin-top: clamp(3rem, 6vw, 5rem);
+}
+
+.sectionIntro {
+  max-width: 48rem;
+  margin-bottom: 1.75rem;
+
+  h2 { margin-bottom: .85rem; }
+}
+
+.details .eyebrow {
+  color: #246e94;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin: 0 0 .75rem;
+}
+
+.needsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.needsCard {
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  border: 1px solid #d8e5ed;
+  border-radius: 1rem;
+  background: #f8fafc;
+
+  h3 { margin-bottom: .65rem; }
+}
+
+.pricingGroups {
+  border-top: 1px solid #cbdde4;
+}
+
+.pricingGroup {
+  border-bottom: 1px solid #cbdde4;
+
+  summary {
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 650;
+    padding: 1.25rem .25rem;
+  }
+
+  &[open] summary { color: #145476; }
+}
+
+.pricingBody {
+  padding: 0 0 1.5rem;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid #d8e5ed;
+  border-radius: .75rem;
+
+  table { width: 100%; border-collapse: collapse; text-align: left; font-size: .95rem; }
+  th, td { padding: .85rem 1rem; line-height: 1.5; vertical-align: top; }
+  thead { background: #eef6fa; }
+  tbody th { font-weight: 500; }
+  tbody tr + tr { border-top: 1px solid #d8e5ed; }
+  td { color: #145476; font-weight: 650; }
+}
+
+.details .pricingNote {
+  margin-top: 1rem;
+  font-size: .92rem;
+  color: #536672;
+}
+
+.assurance {
+  background: #eef6fa;
+  border: 1px solid #d8e5ed;
+  border-radius: 1.25rem;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+
+  h2 { max-width: 44rem; }
+}
+
+.assuranceGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.75rem;
+
+  h3 { margin-bottom: .65rem; }
+}
+
+.assuranceCheck {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: 1rem;
+  background: #174b70;
+  color: white;
+  border-radius: 50%;
+  font-weight: 700;
+}
+
+.coverage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2.5rem;
+  align-items: center;
+  padding: 2.5rem 0;
+  border-top: 1px solid #cbdde4;
+  border-bottom: 1px solid #cbdde4;
+
+  h2 { max-width: 42rem; margin-bottom: 1rem; }
+  p + p { margin-top: .8rem; }
+}
+
+.coverageCta {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+
+  .quote {
+    display: inline-flex;
+    justify-content: center;
+    padding: .9rem 1.5rem;
+    min-height: 48px;
+    border-radius: 2rem;
+    font-weight: 650;
+    text-align: center;
+  }
+}
+
+.phoneLink { color: #174b70; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+.srOnly { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
 @media (max-width: 760px) {
   .layout { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+  .needsGrid, .assuranceGrid, .coverage { grid-template-columns: minmax(0, 1fr); }
+  .coverage { gap: 1.5rem; padding: 2rem 0; }
+  .coverageCta { align-items: flex-start; }
+  .tableWrap th, .tableWrap td { padding: .75rem .55rem; font-size: .85rem; }
 }
