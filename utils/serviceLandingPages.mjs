@@ -5,7 +5,7 @@ export const SERVICE_LANDING_PAGES = {
     headline: "Carpet cleaning in Auckland",
     intro: "Refresh the carpet in up to three bedrooms and one living area from $180. Tell us about any stains or upholstery you’d like included and we’ll price the job before cleaning.",
     description: "Get Auckland carpet and upholstery cleaning prices. Standard cleaning for up to three bedrooms and a living area starts at $180.",
-    benefits: ["Standard clean from $180", "Steam and dry cleaning", "Stain and odour treatment", "Sofas and rugs", "Homes and offices", "Quote before cleaning"],
+    benefits: ["Standard clean from $180", "100% Satisfaction Guarantee", "Certified Technicians", "Same-Day & Weekend Availability", "Steam and dry cleaning", "Stain and odour treatment", "Sofas and rugs", "Quote before cleaning"],
     image: { url: "/quickdry/carpet.webp", width: 1000, height: 1333, alt: "Cleaned carpet in an Auckland home" },
     icon: "furniture",
     card: "Deep cleaning for carpets and soft furnishings, with targeted treatment for stains and odours.",
