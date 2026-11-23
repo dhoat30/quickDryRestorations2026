@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { BUSINESS_PHONE } from '@/utils/businessContact';
 import styles from './ServiceDetails.module.scss';
 
@@ -22,21 +23,21 @@ export default function ServiceContentSections({ page }) {
         </section>
       )}
 
-      {page.pricingGroups && (
+      {page.pricing && (
         <section className={styles.contentSection} aria-labelledby="extra-pricing-title">
           <div className={styles.sectionIntro}>
-            <p className={styles.eyebrow}>Plan your clean</p>
-            <h2 id="extra-pricing-title">More rooms or something extra?</h2>
-            <p>Explore prices for larger homes, extra areas and commercial carpets. We’ll confirm your treatment and final quote after checking the property.</p>
+            {page.pricing.eyebrow && <p className={styles.eyebrow}>{page.pricing.eyebrow}</p>}
+            <h2 id="extra-pricing-title">{page.pricing.title}</h2>
+            <p>{page.pricing.intro}</p>
           </div>
           <div className={styles.pricingGroups}>
-            {page.pricingGroups.map(group => (
-              <details className={styles.pricingGroup} key={group.title}>
+            {page.pricing.groups.map(group => (
+              <details className={styles.pricingGroup} key={group.title} open={group.initiallyOpen}>
                 <summary>{group.title}</summary>
                 <div className={styles.pricingBody}>
                   <div className={styles.tableWrap}>
                     <table>
-                      <caption className={styles.srOnly}>{group.title} prices</caption>
+                      <caption className={styles.srOnly}>{group.title}</caption>
                       <thead>
                         <tr>{group.columns.map(column => <th scope="col" key={column}>{column}</th>)}</tr>
                       </thead>
@@ -54,6 +55,31 @@ export default function ServiceContentSections({ page }) {
                 </div>
               </details>
             ))}
+          </div>
+        </section>
+      )}
+
+      {page.visitPlanning && (
+        <section className={`${styles.contentSection} ${styles.visitPlanning}`} aria-labelledby="visit-planning-title">
+          <Image
+            src={page.visitPlanning.image.src}
+            alt={page.visitPlanning.image.alt}
+            width={page.visitPlanning.image.width}
+            height={page.visitPlanning.image.height}
+            sizes="(max-width: 760px) 100vw, (max-width: 1256px) 40vw, 490px"
+            className={styles.visitPhoto}
+          />
+          <div className={styles.visitCopy}>
+            <h2 id="visit-planning-title">{page.visitPlanning.title}</h2>
+            {page.visitPlanning.items.map(([heading, body]) => (
+              <div key={heading}>
+                <h3>{heading}</h3>
+                <p>{body}</p>
+              </div>
+            ))}
+            <div className={styles.actions}>
+              <a className={styles.quote} href="#get-free-quote">{page.action}</a>
+            </div>
           </div>
         </section>
       )}

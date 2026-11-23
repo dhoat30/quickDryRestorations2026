@@ -39,43 +39,48 @@ export const SERVICE_LANDING_PAGES = {
         ["Sofas, chairs and rugs", "Include soft furnishings in the same enquiry. We assess the fabric and condition, then quote for the items you want cleaned alongside your carpet."],
       ],
     },
-    pricingGroups: [
-      {
-        title: "Larger homes",
-        columns: ["Rooms, including one living area", "Standard", "Heavy Duty"],
-        rows: [
-          ["4 bedrooms", "$220", "$330"],
-          ["5 bedrooms", "$260", "$390"],
-          ["6 bedrooms", "$300", "$450"],
-          ["7 bedrooms", "$340", "$510"],
-        ],
-      },
-      {
-        title: "Extra areas, rugs and mattresses",
-        columns: ["Item", "Price"],
-        rows: [
-          ["Stairs, up to 15 steps", "$45"],
-          ["Extra living area", "$50"],
-          ["Hallway, up to 15 m²", "$40"],
-          ["Hallway, 15–30 m²", "$80"],
-          ["Small rug, up to 2 × 2 m", "$60"],
-          ["Large rug, up to 3 × 3 m", "$90"],
-          ["Single mattress", "$90"],
-          ["Double mattress", "$150"],
-        ],
-        note: "These extras are available with a carpet or upholstery cleaning service. Ask for an itemised quote for sofas, chairs or specialist stain treatment.",
-      },
-      {
-        title: "Commercial carpet cleaning",
-        columns: ["Clean", "Rate", "Minimum booking"],
-        rows: [
-          ["Standard", "$3.50/m²", "$180"],
-          ["Heavy Duty", "$5/m²", "$250"],
-          ["Stairs", "$3/step", "Quoted with your clean"],
-        ],
-        note: "Tell us the floor area, carpet condition and access requirements so we can confirm the scope and price.",
-      },
-    ],
+    pricing: {
+      eyebrow: "Plan your clean",
+      title: "More rooms or something extra?",
+      intro: "Explore prices for larger homes, extra areas and commercial carpets. We’ll confirm your treatment and final quote after checking the property.",
+      groups: [
+        {
+          title: "Larger homes",
+          columns: ["Rooms, including one living area", "Standard", "Heavy Duty"],
+          rows: [
+            ["4 bedrooms", "$220", "$330"],
+            ["5 bedrooms", "$260", "$390"],
+            ["6 bedrooms", "$300", "$450"],
+            ["7 bedrooms", "$340", "$510"],
+          ],
+        },
+        {
+          title: "Extra areas, rugs and mattresses",
+          columns: ["Item", "Price"],
+          rows: [
+            ["Stairs, up to 15 steps", "$45"],
+            ["Extra living area", "$50"],
+            ["Hallway, up to 15 m²", "$40"],
+            ["Hallway, 15–30 m²", "$80"],
+            ["Small rug, up to 2 × 2 m", "$60"],
+            ["Large rug, up to 3 × 3 m", "$90"],
+            ["Single mattress", "$90"],
+            ["Double mattress", "$150"],
+          ],
+          note: "These extras are available with a carpet or upholstery cleaning service. Ask for an itemised quote for sofas, chairs or specialist stain treatment.",
+        },
+        {
+          title: "Commercial carpet cleaning",
+          columns: ["Clean", "Rate", "Minimum booking"],
+          rows: [
+            ["Standard", "$3.50/m²", "$180"],
+            ["Heavy Duty", "$5/m²", "$250"],
+            ["Stairs", "$3/step", "Quoted with your clean"],
+          ],
+          note: "Tell us the floor area, carpet condition and access requirements so we can confirm the scope and price.",
+        },
+      ],
+    },
     assurance: {
       title: "Know what to expect from the Auckland team",
       cards: [
@@ -184,11 +189,11 @@ export const SERVICE_LANDING_PAGES = {
       highlightText: "Cleaning from $6/m² · $240 minimum",
       submitButtonText: "Get my vinyl floor quote",
     },
-    scopeTitle: "Choose the right floor treatment",
+    scopeTitle: "Does your vinyl need a clean or a new finish?",
     steps: [
-      ["Scrub away surface grime", "A machine scrub lifts built-up dirt from vinyl. A clean may be enough when the underlying finish is sound."],
-      ["Remove worn polish", "Where wax or sealer has deteriorated, stripping removes the old coating before a new finish goes on."],
-      ["Seal and polish", "A fresh coating protects against everyday wear. Choose a standard two-coat finish or discuss a heavier three-coat treatment."],
+      ["Dirt that mopping leaves behind", "If the finish is even but dirt has built up around doorways or along a kitchen walkway, a machine scrub may be all the floor needs."],
+      ["Patchy shine or old polish", "If some areas look glossy and others look flat, we check the existing coating. On suitable vinyl, we can strip the old finish, seal the floor and apply two coats of polish."],
+      ["A walkway that wears faster than the rest", "Tell us where people queue, turn or pass through all day. We can assess whether the three-coat heavy-duty finish is worth the extra cost for that floor."],
     ],
     quoteTitle: "Vinyl floor rates",
     rates: [
@@ -197,9 +202,47 @@ export const SERVICE_LANDING_PAGES = {
       ["Heavy-duty finish", "$16/m²", "Three coats. 30 m² minimum charge ($480)"],
     ],
     quoteNote: "Prices apply to one continuous area. Add $50 per separate room or toilet. Areas over 200 m² and floors needing extra work are quoted after inspection.",
+    pricing: {
+      title: "What would my vinyl floor cost?",
+      intro: "Find the example closest to your floor size. Each price covers one clear, continuous area. We’ll confirm the treatment and total for your layout when we quote.",
+      groups: [
+        {
+          title: "Compare prices for 40, 60 and 100 m²",
+          initiallyOpen: true,
+          columns: ["Treatment", "40 m²", "60 m²", "100 m²"],
+          rows: [
+            ["Machine clean", "$240", "$360", "$600"],
+            ["Strip, seal and polish · 2 coats", "$480", "$720", "$1,200"],
+            ["Strip, seal and polish · 3 coats", "$640", "$960", "$1,600"],
+          ],
+          note: "To estimate a rectangular area, multiply length by width. A room 6 metres wide and 10 metres long is 60 m².",
+        },
+        {
+          title: "Add stairs or separate rooms",
+          columns: ["Extra", "Price"],
+          rows: [
+            ["Clean vinyl stairs", "$10 per step"],
+            ["Strip, seal and polish vinyl stairs", "$15 per step"],
+            ["Separate room or toilet", "$50 extra per room"],
+          ],
+          note: "Stair rates cover steps up to 1.5 metres wide. Include the number of steps and any separate rooms in your enquiry.",
+        },
+      ],
+    },
+    visitPlanning: {
+      title: "Getting your home or workplace ready",
+      image: { src: "/02vinyl-floor-cleaning/visitor-010.jpg", width: 1200, height: 1600, alt: "Light reflecting off grey vinyl flooring in a kitchen with white cabinets" },
+      items: [
+        ["At home", "Clear furniture, stools and loose mats before we arrive. If the kitchen or hallway is your only route through the house, ask when you can walk on it again."],
+        ["In a shop or workplace", "Include your opening hours, the time staff need access and where our equipment can be unloaded. For floors over 200 m², we’ll arrange a site visit to price the work."],
+      ],
+    },
     questions: [
-      ["Do I need to move the furniture?", "Yes. The floor needs to be vacant before work starts. Tell us about any separate rooms or stairs when requesting a quote."],
-      ["Will polishing repair damage?", "Cleaning and polishing renew the surface finish. Existing damage to the vinyl itself may still be visible."],
+      ["Can you polish vinyl planks or a factory-finished floor?", "The existing finish determines which treatments are suitable. If you have the flooring brand or care guide, share it with us. We can check whether a machine clean or a fresh coating is appropriate before quoting."],
+      ["How long before I can walk on the floor or put furniture back?", "Allow up to eight hours for the work as a guide. A fresh coating also needs time to dry. Tell us when you need the room back so we can confirm timing for foot traffic and furniture for your chosen finish."],
+      ["Will polishing remove scratches or cuts?", "A scrub can lift surface grime, and renewing the polish can improve scuffs in the coating. Deep cuts, gouges and damage to the vinyl itself will still show through a new finish."],
+      ["Can I get a quote without exact measurements?", "Yes. An approximate size, your Auckland suburb and the number of separate rooms are enough to start. Mention any stairs or worn patches so we can follow up on the details that affect the price."],
+      ["How should I look after the finish?", "Sweep up grit, wipe up spills and use a cleaner recommended for your flooring and finish. If a busy doorway loses its shine while the rest still looks good, ask us to check whether it needs cleaning or recoating."],
     ],
     action: "Get a vinyl floor quote",
   },

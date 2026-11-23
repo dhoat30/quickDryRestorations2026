@@ -4,6 +4,10 @@
   color: #193546;
 
   h2 { font-size: clamp(1.65rem, 2.8vw, 2.6rem); line-height: 1.14; margin: 0 0 1.5rem; }
+  h2[id] {
+    scroll-margin-top: 132px;
+    @media (max-width: 1199px) { scroll-margin-top: 114px; }
+  }
   h3, dt { font-size: 1.15rem; font-weight: 650; margin: 0; }
   p, li, dd { line-height: 1.6; }
   p { margin: .35rem 0 0; }
@@ -129,6 +133,30 @@
   color: #536672;
 }
 
+.visitPlanning {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  align-items: center;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: #eef6fa;
+}
+
+.visitPhoto {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  max-height: 32rem;
+  align-self: stretch;
+  object-fit: cover;
+  object-position: center 60%;
+}
+
+.visitCopy {
+  padding: clamp(1.5rem, 3.5vw, 3rem);
+  > div + div { margin-top: 1.25rem; }
+}
+
 .assurance {
   background: #eef6fa;
   border: 1px solid #d8e5ed;
@@ -195,6 +223,8 @@
 @media (max-width: 760px) {
   .layout { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
   .needsGrid, .assuranceGrid, .coverage { grid-template-columns: minmax(0, 1fr); }
+  .visitPlanning { grid-template-columns: minmax(0, 1fr); }
+  .visitPhoto { aspect-ratio: 3 / 2; height: auto; max-height: 18rem; }
   .coverage { gap: 1.5rem; padding: 2rem 0; }
   .coverageCta { align-items: flex-start; }
   .tableWrap th, .tableWrap td { padding: .75rem .55rem; font-size: .85rem; }
